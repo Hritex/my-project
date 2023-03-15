@@ -7,15 +7,10 @@ import { Component, EventEmitter, Output } from "@angular/core";
 })
 
 export class HeaderComponent {
-    @Output() selection = new EventEmitter<string>();
-    reci : string = 'R';
-    shop : string = 'S'
+    @Output() featureSelected = new EventEmitter<string>();
 
-    onNavigation1() {
-        this.selection.emit(this.reci);
-    }
-    onNavigation2() {
-        this.selection.emit(this.shop);
+    onSelect(feature: string) {
+        this.featureSelected.emit(feature);
     }
 
 }

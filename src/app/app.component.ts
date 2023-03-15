@@ -6,19 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-project';
-  choiceA: any = false;
-  choiceB: any = false;
+  loadedFeature = 'recipe';
 
-  onChoiceMade(ch: string){
-    if (ch === 'R')
-    {
-      this.choiceA = true;
-    }
-    else if (ch === 'S')
-    {
-      this.choiceB = true;
-    }
-    // console.log(choice);
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
   }
 }
