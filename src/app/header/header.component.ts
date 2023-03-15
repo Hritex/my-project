@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component ({
     selector: 'app-header',
@@ -7,5 +7,15 @@ import { Component } from "@angular/core";
 })
 
 export class HeaderComponent {
+    @Output() selection = new EventEmitter<string>();
+    reci : string = 'R';
+    shop : string = 'S'
+
+    onNavigation1() {
+        this.selection.emit(this.reci);
+    }
+    onNavigation2() {
+        this.selection.emit(this.shop);
+    }
 
 }

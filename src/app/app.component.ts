@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-project';
+  choiceA: any = false;
+  choiceB: any = false;
+
+  onChoiceMade(ch: string){
+    if (ch === 'R')
+    {
+      this.choiceA = true;
+    }
+    else if (ch === 'S')
+    {
+      this.choiceB = true;
+    }
+    // console.log(choice);
+  }
 }
