@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Recipe } from '../../recipe.modal';
 
@@ -9,5 +9,8 @@ import { Recipe } from '../../recipe.modal';
 })
 export class RecipeItemComponent {
   @Input() recipe: Recipe | any;
+  @Output() clickedItem = new EventEmitter<string>();
+
+  onClick()
   
 }
