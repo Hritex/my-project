@@ -10,7 +10,10 @@ import { Recipe } from '../../recipe.modal';
 export class RecipeItemComponent {
   @Input() recipe: Recipe | any;
   @Output() clickedItem = new EventEmitter<string>();
+  clickedLink: string = 'link';
 
-  onClick()
+  onClick() {
+    this.clickedItem.emit(this.clickedLink);
+  }
   
 }
