@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Recipe } from './recipe.modal';
 
 @Component({
   selector: 'app-recipes',
@@ -6,10 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent {
-  @Input() recipeItem: string | any;
-
-  getRecipeItem(itemName: string) {
-    this.recipeItem = itemName;
-    console.log(itemName);
-  }
+selectedRecipe: Recipe | any;
 }

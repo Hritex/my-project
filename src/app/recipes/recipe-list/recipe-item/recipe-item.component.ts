@@ -9,11 +9,9 @@ import { Recipe } from '../../recipe.modal';
 })
 export class RecipeItemComponent {
   @Input() recipe: Recipe | any;
-  @Output() clickedItem = new EventEmitter<string>();
-  clickedLink: string = 'link';
-
-  onClick() {
-    this.clickedItem.emit(this.clickedLink);
-  }
+  @Output() recipeSelected = new EventEmitter<void>(); //So that we can listen to this event from outside.
   
+  onSelected() {
+    this.recipeSelected.emit();
+  }
 }
