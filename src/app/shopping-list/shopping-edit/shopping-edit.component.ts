@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+
 import { Ingredient } from 'src/app/shared/ingredient.modal';
 
 @Component({
@@ -7,15 +8,17 @@ import { Ingredient } from 'src/app/shared/ingredient.modal';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent {
-  @ViewChild('nameInput') nameInput! : ElementRef;
-  @ViewChild('amountInput') amountInput! : ElementRef;
-  ingredient: Ingredient[] = [];
+  @ViewChild('nameInput') nameInputRef: ElementRef | any;
+  @ViewChild('amountInput') amountInputRef: ElementRef | any;
+  @Output() ingredientAdded = new EventEmitter<Ingredient>(); 
+  /* Or can also use 
+  @Output() ingredientAdded = new EventEmitter<{name: string, amount: number}>();*/
 
-  onAdd(newNameInput: HTMLInputElement, newAmountInput: HTMLInputElement) {
-    newNameInput = this.nameInput.nativeElement.value;
-    newAmountInput = this.amountInput.nativeElement.value;
-    console.log(newNameInput, newAmountInput);
-    this.ingredient.push({'name': newNameInput, 'amount': newAmountInput});
+  onAddItem() {
+    const ingName = this.nameInputRef.nativeElement.value;
+    const ingAmount = this.amountInputRef.nativeElement.value; // These values are not going to change so "const"
+    const newIngredient = new Ingredient(ingName, ingAmount); // Should use const if you are not going to change the value
+    this.ingredientAdded.emit(newIngredient);
   }
 
 }
